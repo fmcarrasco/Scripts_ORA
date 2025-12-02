@@ -1,0 +1,8 @@
+archivo_balance = "C:/Users/fcarrasco/Desktop/areservas/20251130/balances.txt"
+data_folder = "C:/Felix/ORA/python_scripts/Python_balances_v02/reservas/"
+output = "./output/"
+fecha = "20251130"
+archivo = "balances.txt"
+prioridad_m11 = "True"
+prioridad_m21 = "True"
+con_fecha = "False"
