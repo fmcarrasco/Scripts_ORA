@@ -2,12 +2,15 @@ import numpy as np
 import pandas as pd
 import os
 import shutil
+import time
 import geopandas as gpd
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 from colores_ora import escala_pp, escala_tmax, escala_tmin
 from colores_ora import escala_mapa_control_extr_pp, escala_mapa_control_extr_tmax
 from colores_ora import escala_mapa_control_extr_tmin
+
+start = time.time()
 
 ######################################
 ###### DATOS PARA QUE FUNCIONE
@@ -116,5 +119,8 @@ for df, prefijo in zip([din, dout], ['IN', 'OUT']):
 print('#### Imagenes guardadas en:', carpeta_salida)
 print('######## FIN SCRIPT ########')
 
+end = time.time()
+minutos = np.round((end - start)/60., 2)
 
+print(u'##### Tiempo estimado de ejecución:', minutos, ' minutos')
 
