@@ -219,8 +219,8 @@ CBAnewINgpd['centroide'] = CBAnewINgpd['nom_ctdre']
 CBAnewINgpd['centroide'].head(1)
 CBAnewINgpd_out = CBAnewINgpd.merge(df, on='centroide')
 ##### Con Fecha
-output_file = '50-CBAnew-OUT-' + fecha.strftime('%Y%m%d') + '.shp'
-output_path = os.path.join(outf_fecha, output_file)
+output_file = '50-CBAnew-OUT.shp'
+output_path = os.path.join(output_folder, output_file)
 CBAnewINgpd_out.to_file(output_path)
 print('### Archivo:', output_path, 'listo.')
 ##### Hacer copia Con Fecha
