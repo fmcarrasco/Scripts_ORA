@@ -233,7 +233,7 @@ def save_output_depto(dic, df_R, df_t, item, tipo):
     elif tipo == 'cuartel':
         name_file = ofolder + item + '_' + dic['prov'] +\
                     '_' + dic['clt'] + '.xlsx'
-    writer = pd.ExcelWriter(name_file, engine = 'xlsxwriter')
+    writer = pd.ExcelWriter(name_file, engine = 'openpyxl')
     df_R.to_excel(writer, float_format = '%.3f', sheet_name = 'Agua Util')
     df_t.to_excel(writer, sheet_name = 'PESOS')
     writer.close()
