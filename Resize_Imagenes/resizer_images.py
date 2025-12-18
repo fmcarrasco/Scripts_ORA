@@ -42,8 +42,10 @@ def resize_images(input_folder, output_folder, target_size=(541, 368)):
                 
                 
 # Configuración
-input_folder = "origen"  # Cambiar por tu ruta
-output_folder = "destino"  # Cambiar por tu ruta
+input_folder = "C:/Felix/Programa_ORA/Salidas/BalancesEstaciones/20251208/"  # Cambiar por tu ruta
+output_folder = "C:/Felix/Programa_ORA/Salidas/BalancesEstaciones/20251208/resize_imagenes/"  # Cambiar por tu ruta
+os.makedirs(output_folder, exist_ok=True)
+
 target_size = (541, 368)  # Tu tamaño objetivo
 
 

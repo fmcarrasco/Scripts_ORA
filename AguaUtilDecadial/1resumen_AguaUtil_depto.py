@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 import time
+from funciones_auxiliares import parse_config
 
 def get_xlsfile_data(n_file):
     """
@@ -15,27 +16,22 @@ def get_xlsfile_data(n_file):
     diccionario['clt'] = lst.split('_')[1]
     return diccionario
 
-
-def get_xlsfile_data_cuartel(n_file):
-    """
-    Extrae provincia, departamento, cultivo del nombre de archivo
-    """
-    diccionario = {}
-    lst = n_file.split('.')[0]
-    diccionario['cuartel'] = lst.split('_')[0]
-    diccionario['Prov'] = lst.split('_')[1].split('-')[0]
-    diccionario['Dpto'] = lst.split('_')[1].split('-')[1]
-    diccionario['clt'] = lst.split('_')[2]
-    return diccionario
 #####################################################################
 ##################### ACA COMIENZA SCRIPT  ########################
 #####################################################################
+# Datos Namelist txt
+nml = parse_config('./namelist_agua_util.txt')
+ret_folder = nml.get('carpeta_ret')
+ret_f50 = nml.get('archivo_ret_50')
+ret_f500 = nml.get('archivo_ret_500')
+out_folder = nml.get('carpeta_out')
+##################
 opcion = 0 # 0: Toma el ultimo dato; 1: toma el dato de fecha dado
 fecha_c = dt.datetime(2024, 4, 11)
-c_carpeta = '_20251101_20251117/'
+c_carpeta = '_20251121_20251216/'
 # Carpeta salida x Dpto y Cultivo
 resumen_por = 'departamento'
-p_out = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/out/'
+p_out = out_folder
 # ---- Cambiar para la corrida
 for resol in ['50', '500']:
     
@@ -49,9 +45,11 @@ for resol in ['50', '500']:
         print('### --- Opcion: ', opcion, u' para última fecha disponible --- ###')
 # --------------------- Start Code ---------------------------------------
     if resol == '500':
-        dp_file = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/Reticulas/Grilla500.csv'  # cambiar si resol = 500
+        print('Resolucion: 500; Reticula: ' + ret_folder + ret_f500)
+        dp_file = ret_folder + ret_f500  # cambiar si resol = 500
     elif resol == '50':
-        dp_file = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/Reticulas/Grilla50-CentroidesNuevos.csv'  # cambiar si resol = 500
+        print('Resolucion: 50; Reticula: ' + ret_folder + ret_f50)
+        dp_file = ret_folder + ret_f50  # cambiar si resol = 500
     lfiles = [i for i in os.listdir(ipath) if os.path.isfile(os.path.join(ipath, i))]
     dp = pd.read_csv(dp_file, sep=';', encoding='ISO-8859-1')
     resumen = pd.DataFrame(columns=['Fecha', 'Prov', 'Depto', 'LINK', 'AU_WGT', 'Cultivo'])
@@ -78,9 +76,6 @@ for resol in ['50', '500']:
             resumen = pd.DataFrame([b])
         else:
             resumen = pd.concat([resumen, pd.DataFrame([b])], ignore_index=True)
-        #resumen = resumen.append(b, ignore_index=True)
-        #print(resumen.empty)
-        #exit()
         
 # Guardamos excel con resultado
     print('### --- Guardamos variables --- ###')

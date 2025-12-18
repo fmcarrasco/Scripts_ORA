@@ -15,10 +15,10 @@ start = time.time()
 ######################################
 ###### DATOS PARA QUE FUNCIONE
 ######################################
-archivo_in = 'C:/Felix/ORA/PROGRAMA_ORA_v6.667/salidas_semanales/IN.txt'
-archivo_out = 'C:/Felix/ORA/PROGRAMA_ORA_v6.667/salidas_semanales/OUT.txt'
-shape_provincias = 'C:/Felix/ORA/Proyectos_ArcGIS/CAPAS_SIG/otros/provincias_geo.shp'
-shape_deptos = 'C:/Felix/ORA/Proyectos_ArcGIS/CAPAS_SIG/otros/dptos_geo.shp'
+archivo_in = 'C:/Felix/Programa_ORA/Salidas/IN.txt'
+archivo_out = 'C:/Felix/Programa_ORA/Salidas/OUT.txt'
+shape_provincias = 'C:/Felix/CAPAS_SIG/otros/provincias_geo.shp'
+shape_deptos = 'C:/Felix/CAPAS_SIG/otros/dptos_geo.shp'
 
 print('##### INICIO SCRIPTS MAPAS CONTROL #####')
 print('## Archivo IN en:', archivo_in)

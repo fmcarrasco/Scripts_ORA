@@ -14,25 +14,32 @@ from funciones_auxiliares import calc_AU
 from funciones_auxiliares import calc_AnomAU_diff
 from funciones_auxiliares import calc_AnomAU_std
 from funciones_auxiliares import get_shapefile_AU
+from funciones_auxiliares import parse_config
+
 
 start = time.time()
 ##################################
-# Datos para modificar
-fecha = '20251101'
-guide_file = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/archivos_guia/DptosEscala50-500_TL.xlsx'
-std_folder = 'C:/Felix/ORA/Proyectos_ArcGIS/PublicacionDecadiales/WEB/ESTADÍSTICA2000-2020/std/'
-avg_folder = 'C:/Felix/ORA/Proyectos_ArcGIS/PublicacionDecadiales/WEB/ESTADÍSTICA2000-2020/mean/'
-wrk_folder = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/out/'
-out_folder = 'D:/python/AguaUtil/out/0ResumenDepto_AU/' + fecha + '/'
-shapefile_loc='C:/Felix/ORA/Proyectos_ArcGIS/CAPAS_SIG/otros/dptos_geo.shp'
-shape_outfolder = 'C:/Felix/ORA/Proyectos_ArcGIS/PublicacionDecadiales/'
-#######################################
+# Datos Namelist txt
+nml = parse_config('./namelist_agua_util.txt')
+guide_file = nml.get('guide_file')
+avg_folder = nml.get('avg_folder')
+std_folder = nml.get('std_folder')
+wrk_folder = nml.get('carpeta_out')
+
+#################################
+##### DATOS PARA MODIFICAR ######
+fecha = '20251121'
+out_folder = 'D:/AguaUtilDecadial/0ResumenDepto_AU/' + fecha + '/'
+shapefile_loc='C:/Felix/CAPAS_SIG/otros/dptos_geo.shp'
+shape_outfolder = 'D:/AguaUtilDecadial/0ResumenDepto_AU/' + fecha + '/shapefiles/'
+#################################
 
 
 #######################################
 ## Aca comienza la programacion del codigo
 # Creamos la carpeta donde se van a guardar los archivos
 os.makedirs(out_folder, exist_ok=True)
+os.makedirs(shape_outfolder, exist_ok=True)
 # Colocamos los nombres de cultivo y sus equivalentes al archivo salida
 guide_clt = ['A1', 'A2', 'G1', 'G2', 'M11', 'M12', 'M21', 'M22', 'S1', 'S2', 'TL', 'TC']
 cultivos = ['A11', 'A12', 'G11', 'G12', 'M11', 'M12', 'M21', 'M22', 'S1', 'S2', 'TL', 'TS(TC)']

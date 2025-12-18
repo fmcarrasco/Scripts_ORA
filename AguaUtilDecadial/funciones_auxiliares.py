@@ -22,7 +22,7 @@ def calc_AU(fdato, Se1, m_d):
     sf = Se2[guide_clt]
     # Chequeamos si se hace el cultivo en la decada
     #ind_clt = pd.read_csv('./clt_indicador.csv', sep=';', index_col='clt_c')
-    archivo_indicador = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/clt_indicador.csv'
+    archivo_indicador = './clt_indicador.csv'
     ind_clt = pd.read_csv(archivo_indicador, sep=';', index_col='clt_c')
     se_hace = ind_clt.loc[guide_clt,m_d].to_numpy()
     if np.sum(se_hace == 0) > 0:
@@ -67,7 +67,8 @@ def calc_AnomAU_diff(fdato, fmean, Se1, m_d):
     Se2[cult] = val - media
     sf = Se2[guide_clt]
     # Chequear si se hace el cultivo en la fecha
-    archivo_indicador = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/clt_indicador.csv'
+    #archivo_indicador = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/clt_indicador.csv'
+    archivo_indicador = './clt_indicador.csv'
     ind_clt = pd.read_csv(archivo_indicador, sep=';', index_col='clt_c')
     se_hace = ind_clt.loc[guide_clt,m_d].to_numpy()
     if np.sum(se_hace == 0) > 0:
@@ -111,7 +112,8 @@ def calc_AnomAU_std(fdato, fmean, fstd, Se1, m_d):
     Se2[cult] = (val - media)/std
     sf = Se2[guide_clt]
     # Chequear si se hace el cultivo en la fecha
-    archivo_indicador = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/clt_indicador.csv'
+    #archivo_indicador = 'c:/Felix/ORA/python_scripts/AguaUtil_operativo/clt_indicador.csv'
+    archivo_indicador = './clt_indicador.csv'
     ind_clt = pd.read_csv(archivo_indicador, sep=';', index_col='clt_c')
     se_hace = ind_clt.loc[guide_clt,m_d].to_numpy()
     if np.sum(se_hace == 0) > 0:
@@ -159,7 +161,12 @@ def get_shapefile_AU(df, type_AU,
         return []
     import geopandas as gpd
     gdf = gpd.read_file(shapefile_loc)
-    merged_gdf =gdf.merge(df, on='LINK', how='right')
+    gdf['Sup'] = gdf['Sup'].round(2)
+    merged_gdf = gdf.merge(df, on='LINK', how='right')
+    merged_gdf = merged_gdf.drop(columns=['PROVINCIA_y', 'DEPTO_y', 'Sup'])
+    merged_gdf = merged_gdf.rename(columns={'PROVINCIA_x': 'PROVINCIA', 'DEPTO_x': 'DEPTO'})
+    print(merged_gdf.columns)
+    
     if type_AU == 'AU':
         merged_gdf.to_file(outfolder + 'AU.shp')
         print('Archivo shapefile generado en:', outfolder + 'AU.shp' )
