@@ -30,9 +30,11 @@ opcion = 0 # 0: Toma el ultimo dato; 1: toma el dato de fecha dado
 fecha_c = dt.datetime(2024, 4, 11)
 c_carpeta = '_20251121_20251216/'
 # Carpeta salida x Dpto y Cultivo
-resumen_por = 'departamento'
 p_out = out_folder
-# ---- Cambiar para la corrida
+
+
+
+############# Empieza el CODIGO #################
 for resol in ['50', '500']:
     
     print('### --- Trabajando por DEPARTAMENTO --- ###')

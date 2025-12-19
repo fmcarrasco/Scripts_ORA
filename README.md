@@ -11,11 +11,11 @@ Si es **primera vez que se utiliza, revisar las carpetas**.
 Revisar los siguientes archivos y modificar las carpetas de acuerdo a como este organizado en cada computadora
 
 1. `namelist_agua_util.txt`: Revisar todas las carpetas y ubicarlas de acuerdo a su maquina. Cualquier duda, revisar el [instructivo](https://docs.google.com/document/d/1xEYE-H-Ul1XOV13QOQEJh78HA3IRZgH1/edit?rtpof=true#heading=h.gjdgxs)
-2. `1resumen_AguaUtil_depto.py`: revisar las lineas 33 a 38.
-3. `2proc_final_depto.py`: revisar lineas 21 a 28 y ajustar las carpetas según corresponda a su máquina.
-4. `3resumen_AguaUtil_cuartel.py`: revisar lineas 32 a 41.
-5. `4proc_final_cuartel.py`: Revisar y modificar la ruta de las carpetas en las lineas 49 a 56.
-
+2. `1resumen_AguaUtil_depto.py`: revisar las lineas 29 a 31.
+3. `2proc_final_depto.py`: revisar lineas 29 a 35 y ajustar las carpetas según corresponda a su máquina.
+4. `3resumen_AguaUtil_cuartel.py`: revisar lineas 29 a 32.
+5. `4proc_final_cuartel.py`: Revisar y modificar la ruta de las carpetas en las lineas 52 a 55.
+6. `4proc_final_cuartel_iterar.py`: Hace lo mismo que el script anterior pero itera en distintas fechas. Modificar las lineas 52 a 55.
 
 
 ## MapasControl
