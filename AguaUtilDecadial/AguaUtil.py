@@ -148,8 +148,10 @@ def get_df_deca(df_val, fecha_col):
     elif (deca['c_AU'].iloc[-1] < 8 and deca['f_deca'].iloc[-1].month == 2):
         deca.drop(deca.tail(1).index, inplace=True)
     # No hacer nada en caso que estos casos no se cumplan
-
-    deca.apply(pd.to_numeric, errors='ignore')
+    #print(deca)
+    cols_to_convert = ['AU', 'c_AU']
+    deca[cols_to_convert] = deca[cols_to_convert].apply(pd.to_numeric, errors='coerce')
+    #deca = deca.apply(pd.to_numeric, errors='ignore')
 
     #
     return deca
@@ -256,7 +258,6 @@ def get_divpol_file(resol, ret_folder, ret_f50, ret_f500, tipo):
         else:
             print('ERROR colocaste un ' + tipo + ' que no existe')
             print('Actualmente son validos: departamento y cuartel')
-        dp1.apply(pd.to_numeric, errors='ignore')
         dp1.to_csv(fdivpol, sep=';')
     elif resol == '500':
         dp_file = ret_folder + ret_f500
@@ -268,7 +269,6 @@ def get_divpol_file(resol, ret_folder, ret_f50, ret_f500, tipo):
                 dp['DEPTO'].values.squeeze()
         dp = dp.assign(PRDPT=pr_dp)
         dp1 = dp.groupby(['PRDPT','centroide']).count()
-        dp1.apply(pd.to_numeric, errors='ignore')
         dp1.to_csv(fdivpol, sep=';')
     return fdivpol
 
@@ -384,7 +384,8 @@ def processing_departamento(dic):
             for ncol in cols[1:-1]:
                 cols_new.append(ncol)
             Resumen = Resumen[cols_new]
-            Resumen.apply(pd.to_numeric, errors='ignore')
+            cols_to_convert = Resumen.columns[1:]
+            Resumen[cols_to_convert] = Resumen[cols_to_convert].apply(pd.to_numeric, errors='coerce')
             # -------------------------------------------------------------
             nombre = save_output_depto(dic, Resumen, tabla_peso,
                                        depto, 'departamento')
@@ -461,7 +462,8 @@ def processing_cuartel(dic):
             for ncol in cols[1:-1]:
                 cols_new.append(ncol)
             Resumen = Resumen[cols_new]
-            Resumen.apply(pd.to_numeric, errors='ignore')
+            cols_to_convert = Resumen.columns[1:]
+            Resumen[cols_to_convert] = Resumen[cols_to_convert].apply(pd.to_numeric, errors='coerce')
             # -------------------------------------------------------------
             dic['prov'] = prov
             nombre = save_output_depto(dic, Resumen, tabla_peso,
