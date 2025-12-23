@@ -104,7 +104,8 @@ else:
         print(u'Prioridad M11 en maíz de primera')
         df1['M1'] = df1['M1.1']
         # Completamos con los datos de M12
-        df1.M1.fillna(df1['M1.2'], inplace=True)
+        #df1.M1.fillna(df1['M1.2'], inplace=True)
+        df1['M1'] = df1['M1'].fillna(df1['M1.2'])
     else:
         print(u'Prioridad M12 en maíz de primera')
         df1['M1'] = df1['M1.2']
@@ -130,7 +131,8 @@ else:
         print(u'Prioridad M21 en maíz de primera')
         df1['M2'] = df1['M2.1']
         # Completamos con los datos de M12
-        df1.M2.fillna(df1['M2.2'], inplace=True)
+        #df1.M2.fillna(df1['M2.2'], inplace=True)
+        df1['M2'] = df1['M2'].fillna(df1['M2.2'])
     else:
         print(u'Prioridad M22 en maíz de primera')
         df1['M2'] = df1['M2.2']
