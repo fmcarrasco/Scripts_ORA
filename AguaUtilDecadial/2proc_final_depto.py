@@ -45,6 +45,7 @@ guide_clt = ['A1', 'A2', 'G1', 'G2', 'M11', 'M12', 'M21', 'M22', 'S1', 'S2', 'TL
 cultivos = ['A11', 'A12', 'G11', 'G12', 'M11', 'M12', 'M21', 'M22', 'S1', 'S2', 'TL', 'TS(TC)']
 # Leemos el archivo guia, que luego iremos completando con AU, AnomAUdiff y AnomAUsd
 df = pd.read_excel(guide_file, dtype={'LINK':np.str_})
+df[guide_clt] = df[guide_clt].astype('float')
 nlen = len(df)
 fecha_f = dt.datetime.strptime(fecha,'%Y%m%d')
 fecha_a = dt.datetime(2000,fecha_f.month,fecha_f.day)  # fecha para abrir datos para anomalias
@@ -84,6 +85,7 @@ get_shapefile_AU(dfinal, type_AU='AU', shapefile_loc=shapefile_loc, outfolder=sh
 print('########################################################################')
 print('Generando archivo resumen para anomalia AU diff decadial')
 df = pd.read_excel(guide_file, dtype={'LINK':np.str_})
+df[guide_clt] = df[guide_clt].astype('float')
 nlen = len(df)
 
 out = np.empty((nlen, len(guide_clt)))
@@ -112,6 +114,7 @@ get_shapefile_AU(dfinal, type_AU='AU-AAdif', shapefile_loc=shapefile_loc, outfol
 print('########################################################################')
 print('Generando archivo resumen para anomalia AU sd decadial')
 df = pd.read_excel(guide_file, dtype={'LINK':np.str_})
+df[guide_clt] = df[guide_clt].astype('float')
 nlen = len(df)
 
 out = np.empty((nlen, len(guide_clt)))

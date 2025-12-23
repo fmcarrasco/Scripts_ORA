@@ -151,31 +151,30 @@ def get_shapefile_AU(df, type_AU,
     to be used in the ArcGis project.
     '''
 
-    import pkg_resources
-
-    required = {'geopandas'}
-    installed = {pkg.key for pkg in pkg_resources.working_set}
-    missing = required - installed
-    if missing:
-        print('No esta instalado geopandas. Hay que usar Arcgis para generar los shapefiles')
-        return []
-    import geopandas as gpd
-    gdf = gpd.read_file(shapefile_loc)
-    gdf['Sup'] = gdf['Sup'].round(2)
-    merged_gdf = gdf.merge(df, on='LINK', how='right')
-    merged_gdf = merged_gdf.drop(columns=['PROVINCIA_y', 'DEPTO_y', 'Sup'])
-    merged_gdf = merged_gdf.rename(columns={'PROVINCIA_x': 'PROVINCIA', 'DEPTO_x': 'DEPTO'})
-    print(merged_gdf.columns)
+    try:
+        import geopandas as gpd
+        print(f"The package 'geopandas' is installed.")
+        gdf = gpd.read_file(shapefile_loc)
+        gdf['Sup'] = gdf['Sup'].round(2)
+        merged_gdf = gdf.merge(df, on='LINK', how='right')
+        merged_gdf = merged_gdf.drop(columns=['PROVINCIA_y', 'DEPTO_y', 'Sup'])
+        merged_gdf = merged_gdf.rename(columns={'PROVINCIA_x': 'PROVINCIA', 'DEPTO_x': 'DEPTO'})
+        print(merged_gdf.columns)
     
-    if type_AU == 'AU':
-        merged_gdf.to_file(outfolder + 'AU.shp')
-        print('Archivo shapefile generado en:', outfolder + 'AU.shp' )
-    elif type_AU == 'AU-AAdif':
-        merged_gdf.to_file(outfolder + 'AU-AAdif.shp')
-        print('Archivo shapefile generado en:', outfolder +  'AU-AAdif.shp')
-    elif type_AU == 'AU-AAsd':
-        merged_gdf.to_file(outfolder + 'AU-AAsd.shp')
-        print('Archivo shapefile generado en:', outfolder +  'AU-AAsd.shp')
+        if type_AU == 'AU':
+            merged_gdf.to_file(outfolder + 'AU.shp')
+            print('Archivo shapefile generado en:', outfolder + 'AU.shp' )
+        elif type_AU == 'AU-AAdif':
+            merged_gdf.to_file(outfolder + 'AU-AAdif.shp')
+            print('Archivo shapefile generado en:', outfolder +  'AU-AAdif.shp')
+        elif type_AU == 'AU-AAsd':
+            merged_gdf.to_file(outfolder + 'AU-AAsd.shp')
+            print('Archivo shapefile generado en:', outfolder +  'AU-AAsd.shp')
+    except:
+        print(f"The package 'geopandas' is not installed.")
+        return []
+    
+    
 
     
 
