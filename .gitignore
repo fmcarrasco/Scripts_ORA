@@ -8,9 +8,9 @@ __pycache__/
 
 *.jpg
 *.txt
-./AguaUtilDecadial/namelist_agua_util.txt
-./MapasReserva/config.txt
-./Seguimiento_PP_T/config_database.txt
+AguaUtilDecadial/namelist_agua_util.txt
+MapasReserva/config.txt
+Seguimiento_PP_T/config_database.txt
 
 
 MapasReserva/output/
