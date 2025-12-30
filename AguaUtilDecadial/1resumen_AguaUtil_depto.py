@@ -21,16 +21,20 @@ def get_xlsfile_data(n_file):
 #####################################################################
 # Datos Namelist txt
 nml = parse_config('./namelist_agua_util.txt')
+deca = nml.get('deca')
+dt_deca = dt.datetime.strptime(deca, '%Y-%m-%d')
 ret_folder = nml.get('carpeta_ret')
 ret_f50 = nml.get('archivo_ret_50')
 ret_f500 = nml.get('archivo_ret_500')
-out_folder = nml.get('carpeta_out')
-##################
-opcion = 0 # 0: Toma el ultimo dato; 1: toma el dato de fecha dado
-fecha_c = dt.datetime(2024, 4, 11)
-c_carpeta = '_20251121_20251216/'
 # Carpeta salida x Dpto y Cultivo
-p_out = out_folder
+p_out = nml.get('carpeta_out')
+##################
+opcion = int(nml.get('opcion_fecha')) # 0: Toma el ultimo dato; 1: toma el dato de fecha dado
+if opcion > 0:
+    fstr = nml.get('fecha_opcion')
+    fecha_c = dt.datetime.strptime(fstr, '%Y-%m-%d') 
+c_carpeta = '_' + dt_deca.strftime('%Y%m%d') + '/'
+
 
 
 

@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 *.jpg
-*.txt
+
 AguaUtilDecadial/namelist_agua_util.txt
 MapasReserva/config.txt
 Seguimiento_PP_T/config_database.txt

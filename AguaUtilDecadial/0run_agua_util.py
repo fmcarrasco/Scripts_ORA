@@ -95,8 +95,7 @@ if calculo_por == 'cuartel':
     print('Resolucion: 50; Reticula: ' + ret_folder + ret_f50)
     #
     bla_bla = ['50']
-    salida_50 =  out_folder + 'cuartel_50_' + dt_deca.strftime('%Y%m%d') +\
-                '_' + fhoy + '/'
+    salida_50 =  out_folder + 'cuartel_50_' + dt_deca.strftime('%Y%m%d') + '/'
     salida_500 =  ''
     os.makedirs(salida_50, exist_ok=True)
 else:
@@ -107,10 +106,8 @@ else:
     #
     bla_bla = ['50', '500']
     #bla_bla = ['50']
-    salida_50 =  out_folder + '50_' + dt_deca.strftime('%Y%m%d') +\
-                '_' + fhoy + '/'
-    salida_500 =  out_folder + '500_' + dt_deca.strftime('%Y%m%d') +\
-                '_' + fhoy + '/'
+    salida_50 =  out_folder + '50_' + dt_deca.strftime('%Y%m%d') + '/'
+    salida_500 =  out_folder + '500_' + dt_deca.strftime('%Y%m%d') + '/'
     os.makedirs(salida_50, exist_ok=True)
     os.makedirs(salida_500, exist_ok=True)
 # ----------------------------------------------

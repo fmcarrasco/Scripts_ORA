@@ -1,7 +1,9 @@
 '''
-Este script genera el resumen para cada departamento. Es un excel que es posible
-cargar a ARCGis/QGis para mapear el promedio de decadico y los dos tipos de anomalia 
-implementados.
+Este script genera el resumen para cada cuartel. 
+Es un excel con los datos y también el HTML que 
+se publica en la web en:
+
+http://www.ora.gob.ar/AU-distritos.php
 '''
 
 import datetime as dt
@@ -49,10 +51,12 @@ start = time.time()
 nml = parse_config('./namelist_agua_util.txt')
 guide_file = nml.get('guide_file_cuartel')
 wrk_folder = nml.get('carpeta_out')
+deca = nml.get('deca')
+dt_deca = dt.datetime.strptime(deca, '%Y-%m-%d')
+out_folder = nml.get('carpeta_out_cuartel')  #'D:/AguaUtilDecadial/AU-distritos/2025-2026/'
 # Datos para modificar
-fecha = '2025-11-21'
-cuartel_folder = wrk_folder + 'cuartel_50_20251121_20251216/'
-out_folder = 'D:/AguaUtilDecadial/AU-distritos/2025-2026/'
+fecha = deca
+cuartel_folder = wrk_folder + 'cuartel_50_' + dt_deca.strftime('%Y%m%d') + '/'
 #######################################
 if not os.path.exists(cuartel_folder):
     print('La carpeta:', cuartel_folder, ' NO EXISTE!')
@@ -69,6 +73,7 @@ guide_clt = ['M11', 'M12', 'M21', 'S1', 'S2']
 cultivos = ['M11', 'M12', 'M21', 'S1', 'S2']
 # Leemos el archivo guia, que luego iremos completando con AU
 df = pd.read_excel(guide_file, dtype={'CUARTEL':np.str_})
+df[guide_clt] = df[guide_clt].astype('float')
 nlen = len(df)
 fecha_f = dt.datetime.strptime(fecha,'%Y-%m-%d')
 # Imprimimos algunos datos en pantalla
@@ -84,7 +89,6 @@ print('Generando archivo resumen para AU por CUARTEL')
 out = np.empty((nlen, len(guide_clt)))
 print(out.shape)
 out[:] = -999.
-print(df)
 for it, row in df.iterrows():
     #print(it, row)
     cuartel = row['CUARTEL']
@@ -92,18 +96,15 @@ for it, row in df.iterrows():
     dpto = row['DPTO']
     for col, cultivo in enumerate(['M11', 'M12', 'M21', 'S1', 'S2']):
         fdato = cuartel_folder + cuartel + '_' + prov + '-' + dpto + '_' + cultivo + '.xlsx'
-        #print(fdato)
         if os.path.exists(fdato):
             aux0 = calc_AU_cuartel(fdato, fecha)
-            #print(aux0)
-            #exit()
         else:
             continue
         out[it, col] = aux0
     out[it,:] = check_not_val(out[it, :], row, fecha_f.strftime('%m-%d'))
 dfinal = df.copy()
 dfinal.loc[:, guide_clt] = out
-print(dfinal)
+
 
 nout_file = out_folder + 'AU-' + fecha_f.strftime('%Y%m%d') + '.xlsx'
 dfinal.to_excel(nout_file, index=False, float_format="%.1f")

@@ -11,21 +11,18 @@ from colores_ora import escala_mapa_control_extr_pp, escala_mapa_control_extr_tm
 from colores_ora import escala_mapa_control_extr_tmin
 
 start = time.time()
+#######################################################
+def parse_config(file_path):
+    import re
+    config = {}
+    with open(file_path, 'r') as file:
+        for line in file:
+            # Use regex to match the variable name and value
+            match = re.match(r'(\w+)\s*=\s*"(.*)"', line.strip())
+            if match:
+                config[match.group(1)] = match.group(2)
+    return config
 
-######################################
-###### DATOS PARA QUE FUNCIONE
-######################################
-archivo_in = 'C:/Felix/Programa_ORA/Salidas/IN.txt'
-archivo_out = 'C:/Felix/Programa_ORA/Salidas/OUT.txt'
-shape_provincias = 'C:/Felix/CAPAS_SIG/otros/provincias_geo.shp'
-shape_deptos = 'C:/Felix/CAPAS_SIG/otros/dptos_geo.shp'
-
-print('##### INICIO SCRIPTS MAPAS CONTROL #####')
-print('## Archivo IN en:', archivo_in)
-print('## Archivo OUT en:', archivo_out)
-print('## Shapefile provincias en:', shape_provincias)
-print('## Shapefile departamentos en:', shape_deptos)
-#######################################
 
 def chequea_extremos(lons, lats, dato, prefijo):
     print('Chequeando Extremos!')
@@ -56,6 +53,23 @@ def chequea_extremos(lons, lats, dato, prefijo):
             plot_var['dato'] = dato[i_extr]
 
     return hay_extr, plot_var
+
+######################################
+###### DATOS PARA QUE FUNCIONE
+######################################
+nml = parse_config('./config_mapas_control.txt')
+archivo_in = nml.get('archivo_in')  #'C:/Felix/Programa_ORA/Salidas/IN.txt'
+archivo_out = nml.get('archivo_out')  #'C:/Felix/Programa_ORA/Salidas/OUT.txt'
+shape_provincias = nml.get('shape_provincias')  #'C:/Felix/CAPAS_SIG/otros/provincias_geo.shp'
+shape_deptos = nml.get('shape_deptos')  #'C:/Felix/CAPAS_SIG/otros/dptos_geo.shp'
+
+print('##### INICIO SCRIPTS MAPAS CONTROL #####')
+print('## Archivo IN en:', archivo_in)
+print('## Archivo OUT en:', archivo_out)
+print('## Shapefile provincias en:', shape_provincias)
+print('## Shapefile departamentos en:', shape_deptos)
+#######################################
+
 
 
 
@@ -120,7 +134,7 @@ print('#### Imagenes guardadas en:', carpeta_salida)
 print('######## FIN SCRIPT ########')
 
 end = time.time()
-minutos = np.round((end - start)/60., 2)
+segundos = np.round((end - start), 2)
 
-print(u'##### Tiempo estimado de ejecución:', minutos, ' minutos')
+print(u'##### Tiempo estimado de ejecución:', segundos, 'segundos')
 

@@ -21,17 +21,18 @@ start = time.time()
 ##################################
 # Datos Namelist txt
 nml = parse_config('./namelist_agua_util.txt')
+fecha = nml.get('deca')
+fecha_f = dt.datetime.strptime(fecha,'%Y-%m-%d')
 guide_file = nml.get('guide_file')
 avg_folder = nml.get('avg_folder')
 std_folder = nml.get('std_folder')
 wrk_folder = nml.get('carpeta_out')
-
+out_final_folder = nml.get('carpeta_out_final')
+shapefile_loc = nml.get('shapefile_loc')  #'C:/Felix/CAPAS_SIG/otros/dptos_geo.shp'
 #################################
 ##### DATOS PARA MODIFICAR ######
-fecha = '20251121'
-out_folder = 'D:/AguaUtilDecadial/0ResumenDepto_AU/' + fecha + '/'
-shapefile_loc='C:/Felix/CAPAS_SIG/otros/dptos_geo.shp'
-shape_outfolder = 'D:/AguaUtilDecadial/0ResumenDepto_AU/' + fecha + '/shapefiles/'
+out_folder = out_final_folder + fecha_f.strftime('%Y%m%d') + '/'
+shape_outfolder = out_final_folder + fecha_f.strftime('%Y%m%d') + '/shapefiles/'
 #################################
 
 
@@ -47,7 +48,7 @@ cultivos = ['A11', 'A12', 'G11', 'G12', 'M11', 'M12', 'M21', 'M22', 'S1', 'S2', 
 df = pd.read_excel(guide_file, dtype={'LINK':np.str_})
 df[guide_clt] = df[guide_clt].astype('float')
 nlen = len(df)
-fecha_f = dt.datetime.strptime(fecha,'%Y%m%d')
+
 fecha_a = dt.datetime(2000,fecha_f.month,fecha_f.day)  # fecha para abrir datos para anomalias
 # Imprimimos algunos datos en pantalla
 print('########################################################################')

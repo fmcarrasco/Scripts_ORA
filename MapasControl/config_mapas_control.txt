@@ -1,0 +1,4 @@
+archivo_in = "C:/Felix/Programa_ORA/Salidas/IN.txt"
+archivo_out = "C:/Felix/Programa_ORA/Salidas/OUT.txt"
+shape_provincias = "C:/Felix/CAPAS_SIG/otros/provincias_geo.shp"
+shape_deptos = "C:/Felix/CAPAS_SIG/otros/dptos_geo.shp"

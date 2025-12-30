@@ -19,16 +19,20 @@ def get_xlsfile_data_cuartel(n_file):
 
 # Datos Namelist txt
 nml = parse_config('./namelist_agua_util.txt')
+p_out = nml.get('carpeta_out')
+deca = nml.get('deca')
+dt_deca = dt.datetime.strptime(deca, '%Y-%m-%d')
 ret_folder = nml.get('carpeta_ret')
 ret_f50 = nml.get('archivo_ret_50')
 # ---- Cambiar para la corrida
 resol = '50'  # Resolucion
 resumen_por = 'cuartel'
-# Carpeta salida x Dpto y Cultivo
-p_out = nml.get('carpeta_out')
-ipath = p_out + 'cuartel_50_20251121_20251216/'
-opcion = 0 # 0: Toma el ultimo dato; 1: toma el dato de fecha dado
-fecha_c = dt.datetime(2025, 10, 11)
+# Carpeta salida x Cuartel y Cultivo
+ipath = p_out + 'cuartel_50_' + dt_deca.strftime('%Y%m%d') + '/'
+opcion = int(nml.get('opcion_fecha')) # 0: Toma el ultimo dato; 1: toma el dato de fecha dado
+if opcion > 0:
+    fstr = nml.get('fecha_opcion')
+    fecha_c = dt.datetime.strptime(fstr, '%Y-%m-%d') 
 
 ##########################
 
@@ -49,7 +53,6 @@ resumen = pd.DataFrame(columns=['Fecha', 'Prov', 'Depto', 'Cuartel', 'AU_WGT', '
 start_time = time.time()
 print('Trabajando en: ' + str(len(lfiles)) + ' archivos')
 for nfile in lfiles:
-    #if resumen_por == 'cuartel':
     dlt = get_xlsfile_data_cuartel(nfile)
     df = pd.read_excel(ipath + nfile)
     if opcion == 0:

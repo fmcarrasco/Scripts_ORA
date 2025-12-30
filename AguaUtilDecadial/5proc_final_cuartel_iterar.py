@@ -1,7 +1,9 @@
 '''
-Este script genera el resumen para cada departamento. Es un excel que es posible
-cargar a ARCGis para mapear el promedio de decadico y los dos tipos de anomalia 
-implementados.
+Este script genera el resumen para cada cuartel. 
+Es un excel con los datos y también el HTML que 
+se publica en la web en:
+
+http://www.ora.gob.ar/AU-distritos.php
 '''
 
 import datetime as dt
@@ -49,10 +51,13 @@ start = time.time()
 nml = parse_config('./namelist_agua_util.txt')
 guide_file = nml.get('guide_file_cuartel')
 wrk_folder = nml.get('carpeta_out')
+deca = nml.get('deca')
+dt_deca = dt.datetime.strptime(deca, '%Y-%m-%d')
 # Datos para modificar
 fechas = ['2025-11-11', '2025-11-21']
-cuartel_folder = wrk_folder + 'cuartel_50_20251121_20251216/'
-out_folder = 'D:/AguaUtilDecadial/AU-distritos/2025-2026/'
+cuartel_folder = wrk_folder + 'cuartel_50_' + dt_deca.strftime('%Y%m%d') + '/'
+#cuartel_folder = wrk_folder + 'cuartel_50_20251121_20251216/'
+out_folder = nml.get('carpeta_out_cuartel')
 
 ###################################
 guide_clt = ['M11', 'M12', 'M21', 'S1', 'S2']
@@ -65,6 +70,7 @@ for fecha in fechas:
     # Colocamos los nombres de cultivo y sus equivalentes al archivo salida
     # Leemos el archivo guia, que luego iremos completando con AU
     df = pd.read_excel(guide_file, dtype={'CUARTEL':np.str_})
+    df[guide_clt] = df[guide_clt].astype('float')
     nlen = len(df)
     fecha_f = dt.datetime.strptime(fecha,'%Y-%m-%d')
     # Imprimimos algunos datos en pantalla
