@@ -11,11 +11,31 @@ Si es **primera vez que se utiliza, revisar las carpetas**.
 Revisar los siguientes archivos y modificar las carpetas de acuerdo a como este organizado en cada computadora
 
 1. `namelist_agua_util.txt`: Revisar todas las carpetas y ubicarlas de acuerdo a su maquina. Cualquier duda, revisar el [instructivo](https://docs.google.com/document/d/1xEYE-H-Ul1XOV13QOQEJh78HA3IRZgH1/edit?rtpof=true#heading=h.gjdgxs)
-2. `1resumen_AguaUtil_depto.py`: revisar las lineas 29 a 31.
-3. `2proc_final_depto.py`: revisar lineas 29 a 35 y ajustar las carpetas según corresponda a su máquina.
-4. `3resumen_AguaUtil_cuartel.py`: revisar lineas 29 a 32.
-5. `4proc_final_cuartel.py`: Revisar y modificar la ruta de las carpetas en las lineas 52 a 55.
-6. `4proc_final_cuartel_iterar.py`: Hace lo mismo que el script anterior pero itera en distintas fechas. Modificar las lineas 52 a 55.
+
+Se da aca una descripción de las variables/carpetas/opciones que van en dicho archivo:
+
+* **deca:** Fecha de inicio de la década.
+* **todos_cult:** "SI": calcula sin discriminar cultivos; "NO": Calcula si el cultivo esta activo en la decada; "UNO": Calcula para un unico cultivo.
+* **espec_cult:** Si la opcion todos_cult="UNO", esta variable permite especificar que cultivo se trabaja.
+* **calcula_deca:** Si se calcula los archivos decadales historicos (opciones: "SI" o "NO").
+* **calculo_por:** Si se trabaja por "departamento" o "cuartel".
+* **opcion_fecha:** "0": calcula ultima fecha decadial del archivo; "1": Calcula para fecha dada en fecha_opcion.
+* **fecha_opcion:** fecha en formato "YYYY-mm-dd" para la cual se calcula el decadial.
+* **file_ind:** nombre del archivo que indica que cultivo se hace en la decada que se esta trabajando.
+* **carpeta_ppal:** Carpeta donde estan los codigos.
+* **carpeta_bal:** Carpeta donde están los balances diarios.
+* **carpeta_deca:** Carpeta donde se guardan los balances decádiales.
+* **carpeta_out:** Carpeta de salida general (estan los datos/logs del procesamiento)
+* **carpeta_out_final:** Carpeta de salida final de los datos (donde va a estar lo que se usa para mapear).
+* **carpeta_out_cuartel:** Carpeta de salida final para el calculo por cuartel.
+* **carpeta_ret:** Carpeta donde se guardan los archivos de retículas.
+* **archivo_ret_50:** Archivo reticula 1:50000.
+* **archivo_ret_500:** Archivo reticula 1:500000.
+* **guide_file:** Archivo guia de salida final para calculo por departamento.
+* **guide_file_cuartel:** Archivo guia de salida final para calculo por cuartel.
+* **std_folder:** Carpeta donde esta guardada la desviación estándar entre 2000-2020 para cada decadial.
+* **avg_folder:** Carpeta donde esta guardada la media entre 2000-2020 para cada decadial.
+* **shapefile_loc:** Archivo shapefile deptos_geo.shp. Permite generar el shapefile a plotear (debe tener la columna LINK).
 
 
 ## MapasControl
