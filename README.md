@@ -14,7 +14,7 @@ Revisar los siguientes archivos y modificar las carpetas de acuerdo a como este 
 
 Se da aca una descripción de las variables/carpetas/opciones que van en dicho archivo:
 
-* **deca:** Fecha de inicio de la década.
+* **deca:** Fecha de inicio de la década en formato "YYYY-mm-dd".
 * **todos_cult:** "SI": calcula sin discriminar cultivos; "NO": Calcula si el cultivo esta activo en la decada; "UNO": Calcula para un unico cultivo.
 * **espec_cult:** Si la opcion todos_cult="UNO", esta variable permite especificar que cultivo se trabaja.
 * **calcula_deca:** Si se calcula los archivos decadales historicos (opciones: "SI" o "NO").
