@@ -18,12 +18,10 @@ config = parse_config(config_file)
 
 archivo = config.get('archivo_balance')
 fechastr = config.get('fecha')
-narchivo = config.get('archivo')
 prioridad_m11 = str_to_bool(config.get('prioridad_m11'))
 prioridad_m21 = str_to_bool(config.get('prioridad_m21'))
 data_folder = config.get('data_folder')
 output_folder = config.get('output')
-con_fecha = str_to_bool(config.get('con_fecha'))
 
 # Eliminar la carpeta
 if os.path.exists(output_folder):
@@ -40,7 +38,6 @@ os.makedirs(outf_fecha, exist_ok=True)
 
 
 sep = ','
-#archivo = carpeta + fechastr + '/' + narchivo
 fecha = dt.datetime.strptime(fechastr, '%Y%m%d')
 
 if os.path.isfile(archivo):

@@ -2,7 +2,5 @@ archivo_balance = "C:/Felix/Programa_ORA/Salidas/MapaReservas/20251208/balances.
 data_folder = "C:/Felix/QGIS_proyectos/MapasReservas/shapefile_IN/"
 output = "./output/"
 fecha = "20251208"
-archivo = "balances.txt"
 prioridad_m11 = "True"
 prioridad_m21 = "True"
-con_fecha = "False"

@@ -40,25 +40,38 @@ Se da aca una descripción de las variables/carpetas/opciones que van en dicho a
 
 ## MapasControl
 
-Esta carpeta contiene un script en python que permite hacer los mapas control cada lunes y revisar los datos que ingresan y también como quedo la interpolación. Los detalles se pueden ver en el [instructivo](https://docs.google.com/document/d/1u7-_dUJcydFzMHCWmDmdbWidSVH3g6g2/edit#bookmark=id.wrd0ork2lmhj)
+Esta carpeta contiene un script en python que permite hacer los mapas de control cada lunes y revisar los datos que ingresan y como quedaron los datos interpolados. Los detalles se pueden ver en el [instructivo](https://docs.google.com/document/d/1u7-_dUJcydFzMHCWmDmdbWidSVH3g6g2/edit#bookmark=id.wrd0ork2lmhj)
 
-El script *run_mapas_control.py* solo necesita modificar la ruta de las carpetas de acuerdo a SU computadora en las lineas 18 a 21.
+El script **run_mapas_control.py** solo necesita que se modifiquen los parametros en el archivo `config_mapas_control.txt` para el cual damos una descripción:
 
-Luego de eso genera una carpeta output con las imagenes que se utilizan para evaluar los datos de carga e interpolación.
+* **archivo_in:** Ruta y nombre del archivo con datos de entrada.
+* **archivo_out:** Ruta y nombre del archivo con datos de salida.
+* **shape_provincias:** Ruta y nombre donde se encuentra el archivo: *provincias_geo.shp*.
+* **shape_deptos:** Ruta y nombre donde se encuentra el archivo: *dptos_geo.shp*.
+
+Luego de eso genera una carpeta *output* con las imagenes que se utilizan para evaluar los datos de carga e interpolación para PP, TMIN y TMAX.
 
 ## MapasReserva
 
 Esta carpeta contiene un script para actualizar el archivo excel de reservas y también actualizar los shapefiles que permiten hacer los mapas que se publican.
 
-Se debe modificar el archivo config.txt dentro de la carpeta. esto depende de las rutas y datos de SU computadora. 
+Se debe modificar el archivo `config.txt` dentro de la carpeta. esto depende de las rutas y datos de SU computadora y se da acá una descripción de ellas:
+
+* **archivo_balance:** Ruta y nombre al archivo balances.txt
+* **data_folder:** Ruta de la carpeta donde se encuentran los shapefile IN (previo a actualización) para los mapas de reserva (Reservas, Reservas500, CBA, etc.).
+* **output:** Ruta de la carpeta donde se van a guardar las salidas de este script.
+* **fecha:** Fecha en formato YYYYMMDD que corresponde al balance hídrico.
+* **prioridad_m11:** "True": Si tiene prioridad la primera fecha del maiz de primera. "False": Si tiene prioridad la segunda fecha del maíz de primera.
+* **prioridad_m21:** "True": Si tiene prioridad la primera fecha del maiz de segunda. "False": Si tiene prioridad la segunda fecha del maíz de segunda.
+
 
 Las dudas se pueden revisar en el [instructivo](https://docs.google.com/document/d/1N3-AjRKuhjyW0VXT1TVjIRkK35qXSDTk/edit)
 
-El script genera una carpeta de salida con:
+El script genera una **carpeta de salida** con:
 
-1. Archivo excel Reservas_al_YYYYMMDD.xlxx que contiene para cada centroide el valor de agua util para cada cultivo. 
-2. Shapefiles de mapeo, actualizados con los datos a la fecha. A priori al reemplazar donde se encuentra el proyecto en ArcGIS o QGis, debiera levantar actualizado.
-3. Una carpeta con la fecha que contiene los shapefiles ya con el nombre como se debe subir a la página de descargas de la web ORA.
+1. Archivo excel Reservas_al_YYYYMMDD.xlsx que contiene para cada centroide el valor de agua util para cada cultivo. 
+2. Shapefiles de mapeo, actualizados con los datos a la fecha. A priori al reemplazar donde se encuentra el proyecto en ArcGIS o QGis, debiera levantar actualizado y listo para mapear.
+3. Una carpeta dentro de **output** cuyo nombre es la **fecha** que contiene los shapefiles tal como se deben subir a la página de descargas de la web ORA.
 
 
 ## Resize_Imagenes
