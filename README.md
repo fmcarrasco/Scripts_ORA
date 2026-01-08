@@ -79,9 +79,19 @@ El script genera una **carpeta de salida** con:
 
 ## Resize_Imagenes
 
-Esta carpeta contiene un script que actualmente recibe una carpeta de entrada, busca las imagenes dentro y devuelve una copia con tamaño distinto en una carpeta que cada uno utilice. Actualmente esta hecho para cambiar el tamaño de las imagenes de balance hídrico por estación.
+Esta carpeta contiene un script que actualmente recibe una carpeta de entrada, busca las imagenes dentro y devuelve una copia con tamaño distinto en una carpeta que cada uno utilice. 
 
-Cambiar las rutas en las líneas 45 y 46 del script
+Hay que pasar los parámetros al archivo `config_file.txt` que contiene estas variables:
+
+* **input_folder:** Carpeta con las imagenes originales.
+* **output_folder:** Carpeta para guardar las imagenes con el nuevo tamaño.
+* **tipo:** Para elegir que tamaño se hace el resize. Actualmente hay 2 opciones que pueden ir (incluir las comillas): 
+    * *"BalanceHidrico"*: Modifica el tamaño para el seguimiento de BH por estación.
+    * *"MapasSemanales"*: Modifica el tamaño para los mapas semanales y subirlos a la web.
+
+Una vez que se modifican los parametros en el archivo de configuración, correr el script utilizando:
+
+`python resizer_images.py`
 
 ## Seguimiento_PP_T
 
