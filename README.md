@@ -1,7 +1,10 @@
 # Scripts ORA
 Codigos para realizar y facilitar algunas de las tareas que se realizan en la ORA: Cambio de tamaño de imagenes, Semanales, Reserva, Agua Util Decadial.
 
-A continuación se detalla la función que tienen los scripts en cada carpeta:
+Las pruebas se hicieron a partir de un *environment* creado con CONDA, cuyos paquetes necesarios para correr estos scripts se encuentran en el archivo
+`ora_environment.yml` que se encuentra en la carpeta **z-requerimientos**. Más información sobre CONDA se puede ver [aquí](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).
+
+A continuación se detalla las funciones que resuelve los scripts y vamos por cada carpeta de este proyecto revisando:
 
 ## AguaUtilDecadial
 
