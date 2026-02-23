@@ -149,10 +149,7 @@ def get_shapefile_AU(df, type_AU,
     This function get the dataframe from AU, AUdiff y AUsd
     and make the join with the department shapefile to get the shapefile
     to be used in the ArcGis project.
-    '''
-
-    import geopandas as gpd
-    
+    '''    
 
     try:
         import geopandas as gpd
