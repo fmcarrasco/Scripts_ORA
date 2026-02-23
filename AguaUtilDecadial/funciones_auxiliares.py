@@ -143,7 +143,7 @@ def parse_config(file_path):
     return config
 
 def get_shapefile_AU(df, type_AU,
-                     shapefile_loc='C:/Felix/ORA/Proyectos_ArcGIS/CAPAS_SIG/otros/dptos_geo.shp',
+                     shapefile_loc='C:/Felix/ORA/Proyectos_ArcGIS/CAPAS_SIG/IGN/departamentoPolygon.shp',
                      outfolder = 'C:/Felix/ORA/Proyectos_ArcGIS/PublicacionDecadiales/'):
     '''
     This function get the dataframe from AU, AUdiff y AUsd
@@ -151,14 +151,16 @@ def get_shapefile_AU(df, type_AU,
     to be used in the ArcGis project.
     '''
 
+    import geopandas as gpd
+    
+
     try:
         import geopandas as gpd
         print(f"The package 'geopandas' is installed.")
         gdf = gpd.read_file(shapefile_loc)
-        gdf['Sup'] = gdf['Sup'].round(2)
-        merged_gdf = gdf.merge(df, on='LINK', how='right')
-        merged_gdf = merged_gdf.drop(columns=['PROVINCIA_y', 'DEPTO_y', 'Sup'])
-        merged_gdf = merged_gdf.rename(columns={'PROVINCIA_x': 'PROVINCIA', 'DEPTO_x': 'DEPTO'})
+        merged_gdf = gdf.merge(df, left_on='in1', right_on='LINK', how='right')
+        print(merged_gdf.columns)
+        merged_gdf = merged_gdf.drop(columns=['in1'])
         print(merged_gdf.columns)
     
         if type_AU == 'AU':
@@ -173,7 +175,7 @@ def get_shapefile_AU(df, type_AU,
     except:
         print(f"The package 'geopandas' is not installed.")
         return []
-    
+
     
 
     
