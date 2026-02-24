@@ -156,7 +156,6 @@ def get_shapefile_AU(df, type_AU,
         print(f"The package 'geopandas' is installed.")
         gdf = gpd.read_file(shapefile_loc)
         merged_gdf = gdf.merge(df, left_on='in1', right_on='LINK', how='right')
-        print(merged_gdf.columns)
         merged_gdf = merged_gdf.drop(columns=['in1'])
         print(merged_gdf.columns)
     
