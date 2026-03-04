@@ -223,8 +223,8 @@ output_path = os.path.join(output_folder, output_file)
 CBAnewINgpd_out.to_file(output_path)
 print('### Archivo:', output_path, 'listo.')
 ##### Hacer copia Con Fecha
-archivos_copiar = glob.glob(output_folder+'50-CBAnew-OUT.*')
-copy_shp(archivos_copiar, fecha.strftime('%Y%m%d'), outf_fecha)
+#archivos_copiar = glob.glob(output_folder+'50-CBAnew-OUT.*')
+#copy_shp(archivos_copiar, fecha.strftime('%Y%m%d'), outf_fecha)
 # Borrar variable
 CBAnewINgpd = None
 CBAnewINgpd_out = None
@@ -241,8 +241,8 @@ output_path = os.path.join(output_folder, output_file)
 CORRIENTESINgpd_out.to_file(output_path)
 print('### Archivo:', output_path, 'listo.')
 ##### Hacer copia Con Fecha
-archivos_copiar = glob.glob(output_folder+'50-CORRIENTES-OUT.*')
-copy_shp(archivos_copiar, fecha.strftime('%Y%m%d'), outf_fecha)
+#archivos_copiar = glob.glob(output_folder+'50-CORRIENTES-OUT.*')
+#copy_shp(archivos_copiar, fecha.strftime('%Y%m%d'), outf_fecha)
 # Borrar variables
 CORRIENTESINgpd = None
 CORRIENTESINgpd_out = None
