@@ -1,3 +1,3 @@
-input_folder = "C:/Felix/Programa_ORA/Salidas/BalancesEstaciones/20251208/"
-output_folder = "C:/Felix/Programa_ORA/Salidas/BalancesEstaciones/20251208/resize_imagenes/"
-tipo = "BalanceHidrico"
+input_folder = "C:/Users/fcarrasco/Downloads/semanales_20260209/"
+output_folder = "C:/Users/fcarrasco/Downloads/semanales_20260209//resize_imagenes/"
+tipo = "MapasSemanales"
