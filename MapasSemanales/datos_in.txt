@@ -1,0 +1,8 @@
+fecha_i = "2026-04-27"
+fecha_f = "2026-05-03"
+file_5 = "C:/Felix/Programa_ORA/Salidas/MapaSemanal/20260427_20260503_PPMAXMIN_5-0.csv"
+file_51 = "C:/Felix/Programa_ORA/Salidas/MapaSemanal/20260427_20260503_PPMAXMIN_5-1.csv"
+file_sin_interp = "C:/Felix/Programa_ORA/Salidas/MapaSemanal/20260427_20260503_PPMAXMIN_SIN INTERPOLADOS.csv"
+provincias_shp = "C:/Felix/CAPAS_SIG/IGN/provinciaPolygon.shp"
+argentina_shp = "C:/Felix/CAPAS_SIG/IGN/paisPolygon.shp"
+carpeta_salida = "D:/MapaSemanal/"
