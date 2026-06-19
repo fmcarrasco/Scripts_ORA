@@ -77,6 +77,23 @@ El script genera una **carpeta de salida** con:
 3. Una carpeta dentro de **output** cuyo nombre es la **fecha** que contiene los shapefiles tal como se deben subir a la página de descargas de la web ORA.
 
 
+## MapasSemanales
+
+Esta carpeta contiene scripts para hacer los mapas semanales (Tmin/Tmax/PP/AA etc.). Al finalizar el script genera una carpeta con el nombre de {fecha_ini}_{fecha_fin} que contiene los archivos geotiff para mapear en QGIS o ArcGIS. Además dentro de esa carpeta se arman figuras que continen una versión simple con los mapas y el valor de
+la variable en las estaciones.
+
+No hay que modificar el código, pero si es primera vez que usan el script deben abrir con un editor de texto el archivo `datos_in.txt` y modificar los parametros:
+
+* **fecha_i:** Fecha de inicio del mapa semanal en formato YYYY-MM-DD.
+* **fecha_f:** Fecha de fin del mapa semanal en formato YYYY-MM-DD.
+* **file_5:** Ruta del archivo generado con el listado 5 de estaciones (PPMAXMIN_5-0).
+* **file_51:** Ruta del archivo generado con el listado 5.1 de estaciones (PPMAXMIN_5-1).
+* **file_sin_interp:** Ruta del archivo generado con el listado 5 de estaciones (PPMAXMIN_SIN INTERPOLADOS) y SIN INTERPOLADOS.
+* **provincias_shp:** Ruta del archivo SHAPEFILE de provincias argentinas del IGN.
+* **argentina_shp:** Ruta del archivo SHAPEFILE del límite de Argentina del IGN.
+* **carpeta_salida:** Ruta para donde se van a guardar las salidas del script (ruta de carpeta).
+
+
 ## Resize_Imagenes
 
 Esta carpeta contiene un script que actualmente recibe una carpeta de entrada, busca las imagenes dentro y devuelve una copia con tamaño distinto en una carpeta que cada uno utilice. 
