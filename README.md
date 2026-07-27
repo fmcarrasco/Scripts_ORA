@@ -54,6 +54,22 @@ El script **run_mapas_control.py** solo necesita que se modifiquen los parametro
 
 Luego de eso genera una carpeta *output* con las imagenes que se utilizan para evaluar los datos de carga e interpolación para PP, TMIN y TMAX.
 
+
+## MapasMensuales
+
+Esta carpeta contiene scripts para hacer interpolar utilizando Krigging los mapas mensuales: AAPP y Palmer. Al finalizar el script genera una carpeta con el nombre {YearMes} corresponde y que contiene los archivos geotiff para mapear en QGIS o ArcGIS. Además dentro de esa carpeta se arman figuras que contienen una versión simple con los mapas y el valor de la variable en las estaciones para corroborar si las interpolaciones dieron bien.
+
+No hay que modificar el código, pero si es primera vez que usan el script deben abrir con un editor de texto el archivo `datos_in.txt` y modificar los parametros:
+
+* **fecha_i:** Fecha de inicio del mapa mensual en formato YYYY-MM-DD.
+* **fecha_f:** Fecha de fin del mapa mensual en formato YYYY-MM-DD.
+* **f_palmer:** Ruta del archivo generado con programa_ora.exe para PALMER.
+* **f_aapp:** Ruta del archivo generado con programa_ora.exe para Anomalía PP (AAPP).
+* **provincias_shp:** Ruta del archivo SHAPEFILE de provincias argentinas del IGN.
+* **argentina_shp:** Ruta del archivo SHAPEFILE del límite de Argentina del IGN.
+* **carpeta_salida:** Ruta para donde se van a guardar las salidas del script (ruta de carpeta).
+
+
 ## MapasReserva
 
 Esta carpeta contiene un script para actualizar el archivo excel de reservas y también actualizar los shapefiles que permiten hacer los mapas que se publican.
@@ -105,6 +121,7 @@ Hay que pasar los parámetros al archivo `config_file.txt` que contiene estas va
 * **tipo:** Para elegir que tamaño se hace el resize. Actualmente hay 2 opciones que pueden ir (incluir las comillas): 
     * *"BalanceHidrico"*: Modifica el tamaño para el seguimiento de BH por estación.
     * *"MapasSemanales"*: Modifica el tamaño para los mapas semanales y subirlos a la web.
+    * *"MapasReserva"*: Modifica el tamaño para los mapas de reserva y subirlos a la web.
 
 Una vez que se modifican los parametros en el archivo de configuración, correr el script utilizando:
 
