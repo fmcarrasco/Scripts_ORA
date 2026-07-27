@@ -1,0 +1,3 @@
+input_folder = "C:/Felix/Programa_ORA/Salidas/BalancesEstaciones/20260208_S1/"
+output_folder = "C:/Felix/Programa_ORA/Salidas/BalancesEstaciones/20260208_S1/resize_imagenes/"
+tipo = "BalanceHidrico"

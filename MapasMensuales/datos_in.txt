@@ -1,0 +1,7 @@
+fecha_i = "2026-03-01"
+fecha_f = "2026-03-31"
+f_palmer = "C:/Felix/Programa_ORA/Salidas/Palmer/PALMER_202603.csv"
+f_aapp = "C:/Felix/Programa_ORA/Salidas/Palmer/AAPP_202603.csv"
+provincias_shp = "C:/Felix/CAPAS_SIG/IGN/provinciaPolygon.shp"
+argentina_shp = "C:/Felix/CAPAS_SIG/IGN/paisPolygon.shp"
+carpeta_salida = "D:/MapaMensual/"
