@@ -64,6 +64,8 @@ if tipo == 'BalanceHidrico':
     target_size = (541, 368)  # Tu tamaño objetivo
 elif tipo == 'MapasSemanales':
     target_size = (510, 660)  # Tu tamaño objetivo
+elif tipo == 'MapasReserva':
+    target_size = (570, 738)  # Tu tamaño objetivo
 else:
     print('No existe ese tipo de imagen.')
     print('Actualmente las opciones son:')
